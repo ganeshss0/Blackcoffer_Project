@@ -53,5 +53,7 @@ def html_tag_finder(html_parsed: BS, tag_name: str, identifier: dict = {}) -> 'l
     tags = html_parsed.findAll(tag_name, identifier)
     string = ''
     for tag in tags:
-        string += tag.text
+        paragraphs = tag.findAll('p')
+        for paragraph in paragraphs:
+            string += paragraph.text
     return string

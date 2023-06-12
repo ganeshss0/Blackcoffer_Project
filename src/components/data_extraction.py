@@ -26,4 +26,4 @@ class Extraction:
 
 
     def extract_text(self):
-        self.data['TEXT'] = self.PARSED.apply(html_tag_finder, args=('p'))
+        self.data['TEXT'] = self.PARSED.apply(html_tag_finder, args=('div', {'class' : 'td-post-content tagdiv-type'}))
