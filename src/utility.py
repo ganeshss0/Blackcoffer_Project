@@ -31,13 +31,13 @@ def get_response(url: str, *args, **kwargs) -> R.Response:
         Arguments:
             * url -> URL of a website, example: 'https://en.wikipedia.com'"""
         
-        logging.info('Sending request to URL')
+        logging.info(f'Sending request to {url}')
         try:
             response = R.get(url)
             logging.info('Receive Response Succesful')
         except ConnectionError:
             logging.error('Request Failed')
-            raise CustomException('Requests Failed')
+            raise CustomException('Requests Failed', sys)
         
         return response.text
 
@@ -50,9 +50,8 @@ def html_parser(markup: str) -> BS:
 def html_tag_finder(html_parsed: BS, tag_name: str, identifier: dict = {}) -> 'list[BS]':
     '''Return a list of matching HTML tags from a Soup Object.'''
     
-    return html_parsed.findAll(tag_name, identifier)
-
-def get_response_wrapper(data: pd.DataFrame, *args, **kwargs):
-    response = get_response(data['URL'])
-    with open(os.path.join('Data', 'Raw_Text', data.URL_ID), 'w') as file:
-        file.write(response)
+    tags = html_parsed.findAll(tag_name, identifier)
+    string = ''
+    for tag in tags:
+        string += tag.text
+    return string
