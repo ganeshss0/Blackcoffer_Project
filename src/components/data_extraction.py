@@ -15,7 +15,7 @@ class Extraction:
 
     def load_data(self, FilePath: str = File_Path, *args, **kwargs):
         data = read_excel(FilePath, *args, **kwargs)
-        self.data = data
+        self.data = data.head(10)
 
 
     def get_data(self):

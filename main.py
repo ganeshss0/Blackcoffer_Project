@@ -6,4 +6,4 @@ if __name__ == '__main__':
     app.load_data()
     app.get_data()
     app.extract_text()
-    app.data.to_excel(os.path.join('Data', 'Output.xlsx'))
+    app.data.to_excel(os.path.join('Data', 'Output.xlsx'), index=False)
