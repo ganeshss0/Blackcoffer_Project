@@ -4,12 +4,13 @@ from bs4 import BeautifulSoup as BS
 from src.logger import logging
 from src.exception import CustomException
 
-import sys
-import os
+import sys, os, time
 
 File_Path = os.path.join('Data', 'Input.xlsx')
 
 def read_excel(FilePath: str, *args, **kwargs) -> pd.DataFrame:
+    '''Read the Excel file from FilePath and convert it into dataframe object.'''
+
     if os.path.exists(File_Path):
         try:
             logging.info('Loading Data')
@@ -42,10 +43,15 @@ def get_response(url: str, *args, **kwargs) -> R.Response:
         return response.text
 
 
+
+
 def html_parser(markup: str) -> BS:
     '''Convert string into a Parsed HTML object.'''
     
     return BS(markup, 'html.parser')
+
+
+
 
 def html_tag_finder(html_parsed: BS, tag_name: str, identifier: dict = {}) -> 'list[BS]':
     '''Return a list of matching HTML tags from a Soup Object.'''
@@ -57,3 +63,15 @@ def html_tag_finder(html_parsed: BS, tag_name: str, identifier: dict = {}) -> 'l
         for paragraph in paragraphs:
             string += paragraph.text
     return string
+
+
+
+
+def output_file_name():
+    '''Return the filename of output file.'''
+
+    path = os.path.join('Data', 'Output.xlsx')
+    if os.path.exists(path):
+        file_name = 'Output' + time.strftime('%Y%m%d_%H%M%S') + '.xlsx'
+        path = os.path.join('Data', file_name)
+    return path

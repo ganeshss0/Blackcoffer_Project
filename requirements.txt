@@ -3,4 +3,5 @@ beautifulsoup4
 pandas
 openpyxl
 nltk
+syllable
 -e .
