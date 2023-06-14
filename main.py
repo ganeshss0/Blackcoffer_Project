@@ -20,7 +20,5 @@ if __name__ == '__main__':
     app.data.drop(columns=['TEXT'], inplace=True)
     output_file = output_file_name()
     app.data.to_excel(output_file, index=False)
-    logging.info(f'Analysis Results saved at {output_file}')
-    input('Press any key to close')
-    
+    logging.info(f'Analysis Results saved at {output_file}')    
 

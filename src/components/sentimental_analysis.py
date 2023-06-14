@@ -3,6 +3,7 @@ from src.exception import CustomException
 import os, sys
 import pandas as pd
 from collections import defaultdict
+import nltk
 from nltk import word_tokenize, pos_tag
 from nltk.probability import FreqDist
 import syllables
@@ -28,7 +29,10 @@ class Analysis:
         self.masterdict['positive'] = defaultdict.fromkeys(self.masterdict['positive'][0])
         self.masterdict['negative'] = defaultdict.fromkeys(self.masterdict['negative'][0])  
 
+        nltk.download('punkt')
+        nltk.download('averaged_preceptron_tagger')
 
+        
 
 
     def preprocess_text(self, data:pd.DataFrame) -> None:
