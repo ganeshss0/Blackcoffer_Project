@@ -91,7 +91,7 @@ class Analysis:
 
 
 
-    def readability_analysis(self, raw_data:pd.Series, data: pd.DataFrame) -> tuple[pd.Series]:
+    def readability_analysis(self, raw_data:pd.Series, data: pd.DataFrame) -> tuple:
         '''Calculate Average Sentence Lenght, Percentage of Complex Words, Fog Index, Average Number of Words, Complex Word Count.'''
 
         splitted = raw_data.str.split('.')
