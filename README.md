@@ -1,4 +1,4 @@
-# Blackcoffer_Project
+# Blackcoffer Project
 ## Data Extraction and NLP
 
 *  __Objective__ : The objective of this program is to extract textual data articles from given URL and perform text analysis.
